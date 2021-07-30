@@ -134,7 +134,7 @@ async def notify_dragon_time(role_name):
  
 
 # Start
-token = 'ODcwNTk1OTgyNDM2NDc0OTIx.YQPDsQ.AuI1Iv9euyD_iz1uwTBN_zy7XlY'
+token = 'YOUR BOT TOKEN'
 client.run(token)
 
 # #실제 실행하게 하는 코드
