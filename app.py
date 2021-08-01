@@ -20,14 +20,12 @@ chat_channel = None
 control_channel = None
 command_channel = None
 
-role_morning = '화룡 - 아침 (10:00)'
 role_afternoon = '화룡 - 낮 (13:00, 16:00)'
 role_evening = '화룡 - 저녁 (19:00)'
 role_night = '화룡 - 밤 (22:00)'
 role_dawn = '화룡 - 새벽 (01:00)'
 
 role_map = {
-    '아침': role_morning,
     '낮': role_afternoon,
     '저녁': role_evening,
     '밤': role_night,
@@ -99,10 +97,10 @@ async def dragon_action(message):
 
     if role in member.roles:
         await member.remove_roles(role)
-        await command_channel.send(f'<@{member.id}> {role_name} 알림 추가')
+        await command_channel.send(f'<@{member.id}> {role_name} 알림 삭제')
     else:
         await member.add_roles(role)
-        await command_channel.send(f'<@{member.id}> {role_name} 알림 삭제')
+        await command_channel.send(f'<@{member.id}> {role_name} 알림 추가')
 
 
 async def notify_dragon_time(role_name):
@@ -127,7 +125,6 @@ async def time_scheduler():
         if current_min >= 0 and current_min <= 10:
 
             change_hour = last_hour is not current_hour
-
             last_hour = current_hour
 
             if change_hour is True:
@@ -146,7 +143,6 @@ async def time_scheduler():
                         await notify_dragon_time(role_afternoon)
 
 
-        await asyncio.sleep(1000)
 
 
 # Start
